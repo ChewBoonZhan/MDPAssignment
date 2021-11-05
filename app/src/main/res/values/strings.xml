@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ML Visualized</string>
     <string name="app_quote">A Peek under the hood</string>
+    <string name="default_dir">com.example.ml_visualized.\</string>
 </resources>

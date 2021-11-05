@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ML_Visualized">
         <activity
-            android:name=".MainActivity2"
+            android:name=".view.homeScreen.HomeScreen"
             android:exported="true" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".view.loginScreen.LoginScreen"
+            android:exported="true" />
+        <activity
+            android:name=".view.splashScreen.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

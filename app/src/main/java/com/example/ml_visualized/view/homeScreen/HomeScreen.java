@@ -1,14 +1,16 @@
-package com.example.ml_visualized;
+package com.example.ml_visualized.view.homeScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MainActivity2 extends AppCompatActivity {
+import com.example.ml_visualized.R;
+
+public class HomeScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.home_screen);
     }
 }
