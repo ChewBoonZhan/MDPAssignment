@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.ml_visualized.R;
 import com.example.ml_visualized.controller.fileConnection.SharedPrefFileConnection;
-import com.example.ml_visualized.customToast.CustomToast;
 import com.example.ml_visualized.view.homeScreen.HomeScreen;
 
 public class LoginScreen extends AppCompatActivity{
@@ -26,8 +25,6 @@ public class LoginScreen extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
 
-        // hide the action bar
-        getSupportActionBar().hide();
 
         // to save user's details in the file
         sharedPrefFileConnection = new SharedPrefFileConnection(this);

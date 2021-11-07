@@ -43,9 +43,6 @@ public class SplashScreen extends AppCompatActivity {
         // set to full screen for loading
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // hide the action bar
-        getSupportActionBar().hide();
-
         setContentView(R.layout.splash_screen);
 
         // create new instance of going to new activity controller
@@ -99,7 +96,7 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 else{
                     // user has logged in
-                    stringClassToGo = "view.loginScreen.LoginScreen";
+                    stringClassToGo = "view.homeScreen.HomeScreen";
 
                 }
 

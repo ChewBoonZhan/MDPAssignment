@@ -1,5 +1,28 @@
 <resources>
     <string name="app_name">ML Visualized</string>
     <string name="app_quote">A Peek under the hood</string>
-    <string name="default_dir">com.example.ml_visualized.\</string>
+    <string name="default_dir">com.example.ml_visualized.</string>
+    <string name="basic_ml">Basic Machine Learning</string>
+    <string name="advanced_ml">Advanced Machine Learning</string>
+    <string name="basic_model_title">Basic Machine Learning Model</string>
+    <string name="basic_convolutional_title">Basic Convolutional Model</string>
+    <string name="basic_natural_language_processing_title">Basic Natural Language Processing</string>
+    <string name="advanced_autoencoder_title">Autoencoder - How does it works?</string>
+
+    <string name="how_will_app_help_title">How Will this App help me in Learning Machine Learning?</string>
+    <string name="how_will_app_help_desc1">In this app, important concepts of machine learning will be presented using easy to understand animations and graphics.</string>
+    <string name="how_will_app_help_desc2">This will greatly benefit visual learners.</string>
+    <string name="how_will_app_help_desc3">Learners will also have better understanding of how different parts of Machine Learning model work under the hood</string>
+    <string name="how_will_app_help_desc4">Understanding how Machine learning models work better will allow a better design of model to fit different scenarios.</string>
+    <string name="how_will_app_help_desc5">Viewing and understanding of different parts of a model will allow easier understanding compared to reading articles, or viewing code for a Machine Learning model only, which are mostly designed as a "black box", where the inner workings of a model is obscured by the library providing the functionality.</string>
+
+    <string name="benefits_of_learning_ml_title">What are the benefits of learning Machine Learning?</string>
+    <string name="benefits_of_learning_ml_desc1">Many industries have moved to include Machine Learning in their business.</string>
+    <string name="benefits_of_learning_ml_desc2">Data collection from various ways allow Machine learning, which deals a lot with data to thrive.</string>
+    <string name="benefits_of_learning_ml_desc3">It is easier to land a job in bigger companies that deal with data collection and management, such as Google.</string>
+
+    <string-array name="trial">
+        <item></item>
+    </string-array>
+
 </resources>

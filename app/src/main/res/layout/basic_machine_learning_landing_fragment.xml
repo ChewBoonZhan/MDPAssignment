@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:background="@color/background_dark"
+    android:paddingTop="18dp"
+
+    >
+
+    <TextView
+        android:id="@+id/basic_ml_landing_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="12dp"
+        android:lineSpacingExtra="6dp"
+        android:text="A machine learning model is a function, just like functions we learn in Mathematics."
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/basic_ml_landing_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:lineSpacingExtra="6dp"
+        android:text="It accepts an Input, and provides an Output based on the Mathematical Function."
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/basic_ml_landing_3"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="12dp"
+        app:srcCompat="@drawable/basic_ml_concept" />
+
+    <TextView
+        android:id="@+id/basic_ml_landing_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:lineSpacingExtra="6dp"
+        android:text="Let's look at an example below: "
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/basic_ml_landing_5"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="12dp"
+        app:srcCompat="@drawable/basic_ml_example" />
+
+
+    <TextView
+        android:id="@+id/basic_ml_landing_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:lineSpacingExtra="6dp"
+        android:text="1. 1 and 0 on the left are input, or different parameters being passed into the model. Now, lets look at a simulation of how a Machine Learning model is trained."
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/basic_ml_landing_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:lineSpacingExtra="6dp"
+        android:text="2. 1 and 0 on the left are input, or different parameters being passed into the model. Now, lets look at a simulation of how a Machine Learning model is trained."
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+
+    <TextView
+        android:id="@+id/basic_ml_landing_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:lineSpacingExtra="6dp"
+        android:text="3. 1 and 0 on the left are input, or different parameters being passed into the model. Now, lets look at a simulation of how a Machine Learning model is trained."
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>
+
+
+
+
+
+
+

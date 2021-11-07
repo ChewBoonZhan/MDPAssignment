@@ -10,14 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ML_Visualized">
         <activity
-            android:name=".view.homeScreen.HomeScreen"
+            android:name=".view.lessonScreen.LessonScreen"
             android:exported="true" />
+        <activity
+            android:name=".view.homeScreen.HomeScreen"
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.loginScreen.LoginScreen"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.splashScreen.SplashScreen"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

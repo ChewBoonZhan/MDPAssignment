@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id = "@+id/nav_home_lesson_button"
+        android:enabled="true"
+        android:title="Lesson"
+        android:icon="@drawable/learn_icon_bottom"
+
+        />
+    <item
+        android:id = "@+id/nav_home_desc_button"
+        android:enabled="true"
+        android:title="Description"
+        android:icon="@drawable/desc_icon_bottom"
+        />
+
+
+</menu>
