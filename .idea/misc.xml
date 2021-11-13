@@ -6,7 +6,9 @@
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1953125" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/drawable/icon1_background.xml" value="0.1953125" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/activity_main.xml" value="0.17916666666666667" />
-        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/basic_machine_learning_landing_fragment.xml" value="0.18" />
+        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/basic_machine_learning_fragment2.xml" value="0.25" />
+        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/basic_machine_learning_landing_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/basic_machine_learning_visualization_fragment.xml" value="0.33" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/fragment_action_bar.xml" value="0.2" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_action_bar.xml" value="0.25" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_action_navigation_menu.xml" value="0.17916666666666667" />
@@ -14,7 +16,9 @@
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_lesson_fragment.xml" value="0.25" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_screen.xml" value="0.1" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/homt_action_navigation_menu.xml" value="0.828125" />
-        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/lesson_screen.xml" value="0.11197916666666667" />
+        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/lesson_screen.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/lesson_simulation_screen.xml" value="1.2285714285714286" />
+        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/lesson_visualization_screen.xml" value="0.22" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/login_screen.xml" value="0.18" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/splash_screen.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/subscreen_action_bar.xml" value="0.18" />

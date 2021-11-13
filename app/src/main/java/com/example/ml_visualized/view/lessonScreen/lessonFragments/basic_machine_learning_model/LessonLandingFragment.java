@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -23,10 +22,6 @@ public class LessonLandingFragment extends Fragment implements LessonScreen1Pare
     private int displayedIndex = 1;
 
     private int numberOfDisplayComponents;
-
-    private ScrollView lessonScrollView;
-
-    //https://stackoverflow.com/questions/6831671/is-there-a-way-to-programmatically-scroll-a-scroll-view-to-a-specific-edit-text
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -50,9 +45,8 @@ public class LessonLandingFragment extends Fragment implements LessonScreen1Pare
         displayComponentsCollection.add(view.findViewById(R.id.basic_ml_landing_6));
         displayComponentsCollection.add(view.findViewById(R.id.basic_ml_landing_7));
         displayComponentsCollection.add(view.findViewById(R.id.basic_ml_landing_8));
-
-        // get scrollview
-        lessonScrollView = view.findViewById(R.id.lesson_screen_scroll);
+        displayComponentsCollection.add(view.findViewById(R.id.basic_ml_landing_9));
+        displayComponentsCollection.add(view.findViewById(R.id.basic_ml_landing_10));
 
     }
 
@@ -67,22 +61,23 @@ public class LessonLandingFragment extends Fragment implements LessonScreen1Pare
         numberOfDisplayComponents = length;
     }
 
-    public void showNextElement(){
-
+    @Override
+    public boolean showNextElement(){
 
         if(displayedIndex == numberOfDisplayComponents-1){
             // all elements have been displayed
+            return true;
         }
         else{
             // show the element
             displayedIndex++;
             displayComponentsCollection.get(displayedIndex).setVisibility(View.VISIBLE);
+
+            // there are still elements to be displayed.
+            return false;
+
         }
 
-
-        // add scroll
-        // scroll to bottom of scrollview
-        lessonScrollView.scrollTo(100,-100);
 
     }
 

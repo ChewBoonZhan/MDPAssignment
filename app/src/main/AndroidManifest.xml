@@ -10,8 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ML_Visualized">
         <activity
+            android:name=".view.lessonScreen.LessonVisualizationScreen"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            />
+        <activity
+            android:name=".view.lessonScreen.LessonSimulationScreen"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            />
+        <activity
             android:name=".view.lessonScreen.LessonScreen"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".view.homeScreen.HomeScreen"
             android:exported="true"

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.ml_visualized.R;
+import com.example.ml_visualized.controller.simulateButtonTouch.SimulateButtonTouch;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,9 @@ public class HomeLessonFragment extends Fragment {
 
     // collection of button to access lessons
     private ArrayList<View> buttonLessonCollection;
+
+    // to allow layout to simulate button touch animation
+    private SimulateButtonTouch simulateButtonTouch = new SimulateButtonTouch();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -49,33 +53,7 @@ public class HomeLessonFragment extends Fragment {
         // for each button in arraylist of button lesson collection
         while (counter < numberOfButtonLessonCollection){
             // add touch listener to change alpha of view
-            buttonLessonCollection.get(counter).setOnTouchListener(new View.OnTouchListener() {
-                // override the onTouch method to change alpha
-                @Override
-                public boolean onTouch(View view, MotionEvent event) {
-                    switch (event.getAction()) {
-
-                        // if user is touching on the button
-                        case MotionEvent.ACTION_DOWN: {
-
-                            // set alpha to half
-                            view.setAlpha(0.5f);
-                            break;
-                        }
-
-                        // if user cancelled touching action or ahs lifted touch
-                        case MotionEvent.ACTION_CANCEL:
-                        case MotionEvent.ACTION_UP: {
-
-                            // set alpha back to default value
-                            view.setAlpha(1f);
-                            break;
-                        }
-                    }
-
-                    return false;
-                }
-            });
+            simulateButtonTouch.simulateButtonOnTouch(buttonLessonCollection.get(counter));
 
             counter ++;
         }

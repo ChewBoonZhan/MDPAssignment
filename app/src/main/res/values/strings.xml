@@ -21,8 +21,14 @@
     <string name="benefits_of_learning_ml_desc2">Data collection from various ways allow Machine learning, which deals a lot with data to thrive.</string>
     <string name="benefits_of_learning_ml_desc3">It is easier to land a job in bigger companies that deal with data collection and management, such as Google.</string>
 
-    <string-array name="trial">
-        <item></item>
+    <string-array name="machine_learning_basic_dataset_array">
+        <item>AND</item>
+        <item>NAND</item>
+        <item>OR</item>
+        <item>NOR</item>
     </string-array>
+    <string name = "play_textview_string">▶ Auto Play</string>
+    <string name = "stop_textview_string">⛔ Stop Step</string>
+    <string name = "restart_textview_string">▶ Restart</string>
 
 </resources>
