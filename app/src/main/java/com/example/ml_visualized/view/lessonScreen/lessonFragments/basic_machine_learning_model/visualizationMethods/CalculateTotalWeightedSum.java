@@ -3,36 +3,35 @@ package com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machin
 import android.widget.TextView;
 
 import com.example.ml_visualized.R;
-import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonVisualizationFragment;
+import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonSimulationVisualizationParentFragment;
 
 public class CalculateTotalWeightedSum  extends VisualizationMethods{
     private ResetTextViewBackgroundColor resetTextViewBackgroundColor = new ResetTextViewBackgroundColor();
+    private ChangeOutputText changeOutputText = new ChangeOutputText();
     @Override
-    public int step(LessonVisualizationFragment lessonVisualizationFragment, String textDescription) {
-        resetTextViewBackgroundColor.step(lessonVisualizationFragment, "");
-        super.step(lessonVisualizationFragment,"");
-        double weightedSumInput1 = lessonVisualizationFragment.getModelValueDouble("weightedSumInput1");
-        double weightedSumInput2= lessonVisualizationFragment.getModelValueDouble("weightedSumInput2");
+    public int step(LessonSimulationVisualizationParentFragment lessonSimulationVisualizationParentFragment, String textDescription) {
+        resetTextViewBackgroundColor.step(lessonSimulationVisualizationParentFragment, "");
+
+        double weightedSumInput1 = lessonSimulationVisualizationParentFragment.getModelValueDouble("weightedSumInput1");
+        double weightedSumInput2= lessonSimulationVisualizationParentFragment.getModelValueDouble("weightedSumInput2");
 
         double weightedSum = weightedSumInput1 + weightedSumInput2;
 
-        lessonVisualizationFragment.setModelValueDouble("weightedSum",weightedSum);
+        lessonSimulationVisualizationParentFragment.setModelValueDouble("weightedSum",weightedSum);
 
-        TextView weightedSumTextView = lessonVisualizationFragment.getTextView("weightedSumTextView");
+        TextView weightedSumTextView = lessonSimulationVisualizationParentFragment.getTextView("weightedSumTextView");
         weightedSumTextView.setText((weightedSum + ""));
 
-        weightedSumTextView.setBackgroundColor(lessonVisualizationFragment.getResources().getColor(R.color.foreground_warn));
+        weightedSumTextView.setBackgroundColor(lessonSimulationVisualizationParentFragment.getResources().getColor(R.color.foreground_warn));
 
-        TextView input1WeightedSum = lessonVisualizationFragment.getTextView("input1WeightedSum");
-        input1WeightedSum.setBackgroundColor(lessonVisualizationFragment.getResources().getColor(R.color.foreground_warn));
+        TextView input1WeightedSum = lessonSimulationVisualizationParentFragment.getTextView("input1WeightedSum");
+        input1WeightedSum.setBackgroundColor(lessonSimulationVisualizationParentFragment.getResources().getColor(R.color.foreground_warn));
 
-        TextView input2WeightedSum = lessonVisualizationFragment.getTextView("input2WeightedSum");
-        input2WeightedSum.setBackgroundColor(lessonVisualizationFragment.getResources().getColor(R.color.foreground_warn));
+        TextView input2WeightedSum = lessonSimulationVisualizationParentFragment.getTextView("input2WeightedSum");
+        input2WeightedSum.setBackgroundColor(lessonSimulationVisualizationParentFragment.getResources().getColor(R.color.foreground_warn));
 
-        lessonVisualizationFragment.changeOutputTextViewContent(textDescription);
+        changeOutputText.step(lessonSimulationVisualizationParentFragment,textDescription);
 
-        // change output text
-        lessonVisualizationFragment.changeOutputTextViewContent(textDescription);
 
         return getNO_ACTION();
     }

@@ -3,26 +3,27 @@ package com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machin
 import android.widget.TextView;
 
 import com.example.ml_visualized.R;
-import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonVisualizationFragment;
+import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonSimulationVisualizationParentFragment;
 
 public class ComputeOutput extends VisualizationMethods{
+    private ChangeOutputText changeOutputText = new ChangeOutputText();
     private ResetTextViewBackgroundColor resetTextViewBackgroundColor = new ResetTextViewBackgroundColor();
     @Override
-    public int step(LessonVisualizationFragment lessonVisualizationFragment, String textDescription) {
-        resetTextViewBackgroundColor.step(lessonVisualizationFragment, "");
+    public int step(LessonSimulationVisualizationParentFragment lessonSimulationVisualizationParentFragment, String textDescription) {
+        resetTextViewBackgroundColor.step(lessonSimulationVisualizationParentFragment, "");
 
-        TextView thresholdComparisionTextView = lessonVisualizationFragment.getTextView("thresholdComparisionTextView");
-        thresholdComparisionTextView.setBackgroundColor(lessonVisualizationFragment.getResources().getColor(R.color.foreground_warn));
+        TextView thresholdComparisionTextView = lessonSimulationVisualizationParentFragment.getTextView("thresholdComparisionTextView");
+        thresholdComparisionTextView.setBackgroundColor(lessonSimulationVisualizationParentFragment.getResources().getColor(R.color.foreground_warn));
 
-        double threshold = lessonVisualizationFragment.getModelValueDouble("THRESHOLD");
+        double threshold = lessonSimulationVisualizationParentFragment.getModelValueDouble("THRESHOLD");
 
-        double weightedSum = lessonVisualizationFragment.getModelValueDouble("weightedSum");
+        double weightedSum = lessonSimulationVisualizationParentFragment.getModelValueDouble("weightedSum");
 
 
-        TextView outputTextView = lessonVisualizationFragment.getTextView("outputTextView");
+        TextView outputTextView = lessonSimulationVisualizationParentFragment.getTextView("outputTextView");
 
         int output;
-        String datasetType = lessonVisualizationFragment.getDatasetType();
+        String datasetType = lessonSimulationVisualizationParentFragment.getDatasetType();
         if(datasetType.equals("AND") || datasetType.equals("OR")) {
             output = (weightedSum >= threshold)? 1: 0;
         }
@@ -33,12 +34,12 @@ public class ComputeOutput extends VisualizationMethods{
 
         outputTextView.setText(("" + output));
 
-        outputTextView.setBackgroundColor(lessonVisualizationFragment.getResources().getColor(R.color.foreground_warn));
+        outputTextView.setBackgroundColor(lessonSimulationVisualizationParentFragment.getResources().getColor(R.color.foreground_warn));
 
-        lessonVisualizationFragment.setModelValueInt("outputFromModel",output);
+        lessonSimulationVisualizationParentFragment.setModelValueInt("outputFromModel",output);
 
         // change output text to empty string
-        lessonVisualizationFragment.changeOutputTextViewContent(textDescription);
+        changeOutputText.step(lessonSimulationVisualizationParentFragment,textDescription);
 
         return getNO_ACTION();
     }

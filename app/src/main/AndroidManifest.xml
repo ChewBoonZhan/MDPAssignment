@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon1"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -15,7 +15,7 @@
             android:screenOrientation="portrait"
             />
         <activity
-            android:name=".view.lessonScreen.LessonSimulationScreen"
+            android:name=".view.lessonScreen.LessonBlankScreen"
             android:exported="true"
             android:screenOrientation="portrait"
             />

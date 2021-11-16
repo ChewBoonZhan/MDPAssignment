@@ -1,6 +1,6 @@
 package com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.visualizationMethods;
 
-import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonVisualizationFragment;
+import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonSimulationVisualizationParentFragment;
 
 public class VisualizationMethods {
 
@@ -30,7 +30,7 @@ public class VisualizationMethods {
     }
 
 
-    public int step(LessonVisualizationFragment lessonVisualizationFragment, String textDescription) {
+    public int step(LessonSimulationVisualizationParentFragment lessonSimulationVisualizationParentFragment, String textDescription) {
 
         return getNO_ACTION();
     }

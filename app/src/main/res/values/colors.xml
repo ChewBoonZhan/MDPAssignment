@@ -3,6 +3,7 @@
     <color name="background_dark">#264653</color>
     <color name = "background_dark_light">#287271</color>
     <color name="background_light">#2A9D8F</color>
+    <color name="background_light_not_clickable">#7ecfc5</color>
     <color name="foreground_light">#E9C46A</color>
     <color name="foreground_alt">#F4A261</color>
     <color name="foreground_warn">#E76F51</color>

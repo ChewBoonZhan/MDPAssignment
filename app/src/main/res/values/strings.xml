@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name">ML Visualized</string>
+    <string name="app_name">Uncover ML</string>
     <string name="app_quote">A Peek under the hood</string>
     <string name="default_dir">com.example.ml_visualized.</string>
     <string name="basic_ml">Basic Machine Learning</string>
     <string name="advanced_ml">Advanced Machine Learning</string>
     <string name="basic_model_title">Basic Machine Learning Model</string>
     <string name="basic_convolutional_title">Basic Convolutional Model</string>
-    <string name="basic_natural_language_processing_title">Basic Natural Language Processing</string>
+    <string name="basic_natural_language_processing_title">Natural Language Processing</string>
     <string name="advanced_autoencoder_title">Autoencoder - How does it works?</string>
 
     <string name="how_will_app_help_title">How Will this App help me in Learning Machine Learning?</string>
@@ -31,4 +31,8 @@
     <string name = "stop_textview_string">⛔ Stop Step</string>
     <string name = "restart_textview_string">▶ Restart</string>
 
+    <string-array name="machine_learning_basic_dataset_data">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 </resources>

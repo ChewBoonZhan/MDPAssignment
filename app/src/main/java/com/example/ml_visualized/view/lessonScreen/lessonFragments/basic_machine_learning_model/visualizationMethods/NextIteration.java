@@ -3,21 +3,21 @@ package com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machin
 import android.widget.TextView;
 
 import com.example.ml_visualized.R;
-import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonVisualizationFragment;
+import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonSimulationVisualizationParentFragment;
 
 public class NextIteration extends VisualizationMethods{
     @Override
-    public int step(LessonVisualizationFragment lessonVisualizationFragment, String textDescription) {
-        super.step(lessonVisualizationFragment,"");
-        int numberOfIterations = lessonVisualizationFragment.getModelValueInt("numberOfIterations");
+    public int step(LessonSimulationVisualizationParentFragment lessonSimulationVisualizationParentFragment, String textDescription) {
+
+        int numberOfIterations = lessonSimulationVisualizationParentFragment.getModelValueInt("numberOfIterations");
 
         numberOfIterations++;
 
-        TextView numberOfIterationsTextView = lessonVisualizationFragment.getTextView("numberOfIterationsTextView");
+        TextView numberOfIterationsTextView = lessonSimulationVisualizationParentFragment.getTextView("numberOfIterationsTextView");
 
         numberOfIterationsTextView.setText(("" + numberOfIterations));
 
-        numberOfIterationsTextView.setBackgroundColor(lessonVisualizationFragment.getResources().getColor(R.color.foreground_warn));
+        numberOfIterationsTextView.setBackgroundColor(lessonSimulationVisualizationParentFragment.getResources().getColor(R.color.foreground_warn));
 
         return getNO_ACTION();
     }

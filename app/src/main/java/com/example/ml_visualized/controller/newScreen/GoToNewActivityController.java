@@ -3,7 +3,6 @@ package com.example.ml_visualized.controller.newScreen;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 
 public class GoToNewActivityController {
 
@@ -26,6 +25,7 @@ public class GoToNewActivityController {
 
             // create intent to go to the new activity
             intent = new Intent(context,Class.forName(activityClassName));
+
 
         } catch (ClassNotFoundException e) {
             // print stack trace, if class name for new activity

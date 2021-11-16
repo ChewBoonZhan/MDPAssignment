@@ -1,5 +1,6 @@
 package com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -10,9 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 
 import com.example.ml_visualized.R;
+import com.example.ml_visualized.view.lessonScreen.LessonVisualizationScreen;
 import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.data.LessonFragmentData;
 import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.data.LessonVisualizationData;
 import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.visualizationMethods.BackPropagate;
@@ -31,9 +32,7 @@ import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LessonVisualizationFragment extends Fragment {
-
-
+public class LessonVisualizationFragment extends LessonSimulationVisualizationParentFragment {
 
     private View view;
 
@@ -41,10 +40,6 @@ public class LessonVisualizationFragment extends Fragment {
     private final VisualizationMethods visualizationMethods = new VisualizationMethods();
     private final ResetVisualization resetVisualization = new ResetVisualization();
     private final ResetVisualizationIteration resetVisualizationIteration = new ResetVisualizationIteration();
-
-
-    private HashMap<String,TextView> textViewCollection = new HashMap<String, TextView>();
-
 
     private LessonFragmentData lessonFragmentData = new LessonFragmentData();
 
@@ -63,15 +58,11 @@ public class LessonVisualizationFragment extends Fragment {
     private ArrayList<Integer> input2Collection = new ArrayList<Integer>();
     private ArrayList<Integer> outputCollection = new ArrayList<Integer>();
 
-    private HashMap<String,Integer> integerModelParameter = new HashMap<String,Integer>();
-    private HashMap<String,Double> doubleModelParameter = new HashMap<String,Double>();
-
 
     private ArrayList<VisualizationMethods> visualizationSteps = new ArrayList<VisualizationMethods>();
     private int numberOfVisualizationSteps;
 
     // model parameters
-
     private int stepCounter = 0, numberOfCorrectDataset = 0, afterStepCounter = 0, inputCounter = 0;
 
     private ArrayList<String> afterCompletedIterations = new ArrayList<String>();
@@ -85,20 +76,41 @@ public class LessonVisualizationFragment extends Fragment {
             INITIAL_WEIGHT1 = 0.4,
             INITIAL_WEIGHT2 = 0.4;
 
+    private int numberOfIterations = 0;
+
+    private LessonVisualizationScreen lessonVisualizationScreen;
+
+    private boolean visualizationStarted = false;
 
 
-    public LessonVisualizationFragment(String datasetType,Button autoStepButton,Button nextStepButton,TextView outputTextView){
+
+    public LessonVisualizationFragment(String datasetType, LessonVisualizationScreen lessonVisualizationScreen){
         super();
 
         // set the dataset type to visualize
         this.datasetType = datasetType;
 
+        this.lessonVisualizationScreen = lessonVisualizationScreen;
+
         // set the button to be saved privately
-        this.nextStepButton = nextStepButton;
+        this.nextStepButton = lessonVisualizationScreen.getNextStepButton();
 
-        this.autoStepButton = autoStepButton;
-        textViewCollection.put("outputDescriptionTextView",outputTextView);
+        this.autoStepButton = lessonVisualizationScreen.getAutoStepButton();
 
+        addTextViewCollection("outputDescriptionTextView",lessonVisualizationScreen.getOutputTextView());
+
+    }
+
+    private void resetModelParameter(){
+        stepCounter = 0;
+        numberOfCorrectDataset = 0;
+        afterStepCounter = 0;
+        inputCounter = 0;
+
+        setModelValueDouble("weight1",INITIAL_WEIGHT1);
+        setModelValueDouble("weight2",INITIAL_WEIGHT2);
+
+        resetNumberOfIterations();
     }
 
     @Override
@@ -107,7 +119,7 @@ public class LessonVisualizationFragment extends Fragment {
 
         view = inflater.inflate(R.layout.basic_machine_learning_visualization_fragment, container, false);
 
-        getScreenComponents();
+        getTextViewCollection(view);
 
         loadDataIntoArrayList();
 
@@ -134,8 +146,15 @@ public class LessonVisualizationFragment extends Fragment {
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        stepPlaying = false;
 
+        resetModelParameter();
 
+        resetVisualization.step(this, "");
+    }
 
     private void initSteps(){
         visualizationSteps.add(new ChangeOutputText());
@@ -162,12 +181,14 @@ public class LessonVisualizationFragment extends Fragment {
        nextStepButton.setOnClickListener(new View.OnClickListener() {
            public void onClick(View v)
            {
+               visualizationStarted = true;
                step();
            }
        });
 
        autoStepButton.setOnClickListener(new View.OnClickListener(){
            public void onClick(View v){
+
                autoStepButtonOnClick();
            }
        });
@@ -187,20 +208,36 @@ public class LessonVisualizationFragment extends Fragment {
             if(inputCounter == input1Collection.size()){
                 inputCounter = 0;
             }
+            else{
+                inputCounter++;
+            }
+
 
             loadInputOutputIntoHashmap(inputCounter);
 
-            inputCounter++;
-            // reset visualization for next iteration
+
+            // increase number of iterations
+            numberOfIterations ++;
+
+            // update the number of iterations textview
+            TextView numberOfIterationsTextView = getTextView("numberOfIterationsTextView");
+            numberOfIterationsTextView.setText(("" + numberOfIterations));
+
+            Log.d("Thanos","" + inputCounter);
 
         }
         if(numberOfCorrectDataset == input1Collection.size()){
-            if(afterStepCounter < afterCompletedIterations.size()-1){
+            if(afterStepCounter <= afterCompletedIterations.size()-1){
                 changeOutputText.step(this,afterCompletedIterations.get(afterStepCounter));
                 afterStepCounter++;
             }
             else{
+                // go to new activity
+                Intent intent = lessonVisualizationScreen.goToNewActivity();
+                intent.putExtra("integerModelParameter",getIntegerModelParameter());
+                intent.putExtra("doubleModelParameter",getDoubleModelParameter());
 
+                lessonVisualizationScreen.startIntentActivity(intent);
             }
 
         }
@@ -221,9 +258,8 @@ public class LessonVisualizationFragment extends Fragment {
                 setModelValueInt("learningRateChange",changeWeightState);
             }
 
-
-
             stepCounter++;
+
 
         }
 
@@ -231,9 +267,9 @@ public class LessonVisualizationFragment extends Fragment {
     }
     private void loadInputOutputIntoHashmap(int index){
         // load new set of inputs
-        integerModelParameter.put("input1",input1Collection.get(index));
-        integerModelParameter.put("input2",input2Collection.get(index));
-        integerModelParameter.put("expectedOutput",outputCollection.get(index));
+        setModelValueInt("input1",input1Collection.get(index));
+        setModelValueInt("input2",input2Collection.get(index));
+        setModelValueInt("expectedOutput",outputCollection.get(index));
     }
 
     private void initAfterCompletedIterations(){
@@ -241,27 +277,11 @@ public class LessonVisualizationFragment extends Fragment {
         afterCompletedIterations.add("Let's try the model out with some Inputs");
     }
 
-    private void getScreenComponents(){
-        textViewCollection.put("input1TextView",view.findViewById(R.id.input1_textview));
-        textViewCollection.put("input2TextView",view.findViewById(R.id.input2_textview));
-        textViewCollection.put("input1WeightedSum",view.findViewById(R.id.input1_weighted_sum_textview));
-        textViewCollection.put("input2WeightedSum",view.findViewById(R.id.input2_weighted_sum_textview));
-        textViewCollection.put("outputTextView",view.findViewById(R.id.output_textview));
-        textViewCollection.put("input1WeightTextView",view.findViewById(R.id.input_1_weight_textview));
-        textViewCollection.put("input2WeightTextView",view.findViewById(R.id.input_2_weight_textview));
-        textViewCollection.put("weightedSumTextView",view.findViewById(R.id.weighted_sum_textview));
-        textViewCollection.put("thresholdTextView",view.findViewById(R.id.threshold_textview));
-        textViewCollection.put("thresholdComparisionTextView",view.findViewById(R.id.threshold_constraint_comparision_textview));
-        textViewCollection.put("actualOutputTextView",view.findViewById(R.id.output_comparision_textview));
-        textViewCollection.put("numberOfIterationsTextView",view.findViewById(R.id.number_of_iteration_textview));
-        textViewCollection.put("learningRateTextView",view.findViewById(R.id.learning_rate_textview));
-
-
-
-    }
 
     private void loadModelParameter(){
-        integerModelParameter.put("numberOfIterations",0);
+        HashMap<String,Integer> integerModelParameter = new HashMap<String,Integer>();
+        HashMap<String,Double> doubleModelParameter = new HashMap<String,Double>();
+
         integerModelParameter.put("input1",0);
         integerModelParameter.put("input2",0);
         integerModelParameter.put("expectedOutput",0);
@@ -275,31 +295,14 @@ public class LessonVisualizationFragment extends Fragment {
         doubleModelParameter.put("weightedSumInput1",0.0);
         doubleModelParameter.put("weightedSumInput2",0.0);
 
+        // set the integer and double parameter for its parent
+        setIntegerModelParameter(integerModelParameter);
+
+        setDoubleModelParameter(doubleModelParameter);
+
     }
 
-    public TextView getTextView(String textViewKey){
-        return textViewCollection.get(textViewKey);
-    }
 
-    public int getModelValueInt(String valueKey){
-        return integerModelParameter.get(valueKey);
-    }
-
-    public void setModelValueInt(String valueKey, int integerValue){
-        integerModelParameter.put(valueKey,integerValue);
-    }
-
-    public double getModelValueDouble(String valueKey){
-        return doubleModelParameter.get(valueKey);
-    }
-
-    public void setModelValueDouble(String valueKey, double doubleValue){
-        doubleModelParameter.put(valueKey,doubleValue);
-    }
-
-    public void changeOutputTextViewContent(String content){
-        changeOutputText.step(this,content);
-    }
 
     private void loadDataIntoArrayList(){
         HashMap<String, ArrayList<Integer>> datasetCollection =  lessonFragmentData.getSpecificDatasetCollection(datasetType);
@@ -314,16 +317,20 @@ public class LessonVisualizationFragment extends Fragment {
             public void run() {
                 if(stepPlaying){
                     step();
-                    if(afterStepCounter < afterCompletedIterations.size()-1){
+                    if(afterStepCounter <= afterCompletedIterations.size()-1){
                         autoStep();
-                        Log.d("thanos","Check if I'm still called at the end");
                     }
                     else{
+                        visualizationStarted = false;
+
                         // change the textview to stop playing.
                         // change it to ""
                         autoStepButton.setText(R.string.restart_textview_string);
 
+                        enableNextStepButton(true);
+
                         autoStepButton.setBackgroundColor(getResources().getColor(R.color.foreground_light));
+
                     }
 
                 }
@@ -331,9 +338,18 @@ public class LessonVisualizationFragment extends Fragment {
         },DELAY_BEFORE_NEXT_SCROLL);
     }
 
+    private void resetNumberOfIterations(){
+        numberOfIterations = 0;
+        setModelValueInt("numberOfIterations",0);
+        TextView numberOfIterationsTextView = getTextView("numberOfIterationsTextView");
+        numberOfIterationsTextView.setText(("" + 0));
+    }
+
     private void autoStepButtonOnClick(){
         // sets a timer before auto clicking (calling function)
         if(stepPlaying){
+            visualizationStarted = false;
+
             // pause step playing
             stepPlaying = false;
 
@@ -343,12 +359,27 @@ public class LessonVisualizationFragment extends Fragment {
 
             autoStepButton.setBackgroundColor(getResources().getColor(R.color.foreground_light));
 
-            // reset visualization
-            resetVisualizationIteration.step(this, "");
+            resetModelParameter();
 
+            loadInputOutputIntoHashmap(0);
+
+            // reset visualization
+            resetVisualization.step(this, "");
+
+            enableNextStepButton(true);
 
         }
         else{
+            if(!visualizationStarted){
+                // visualization has just ended
+                resetModelParameter();
+
+                loadInputOutputIntoHashmap(0);
+            }
+            step();
+
+            visualizationStarted = true;
+
             // play step playing
             stepPlaying = true;
 
@@ -357,10 +388,27 @@ public class LessonVisualizationFragment extends Fragment {
 
             autoStepButton.setBackgroundColor(getResources().getColor(R.color.foreground_warn));
 
+            enableNextStepButton(false);
+
             autoStep();
         }
     }
+    private void enableNextStepButton(boolean enableButton){
+        if(enableButton){
+            //enable next button
 
+            // set to be able to click on next step button
+            nextStepButton.setClickable(true);
+            nextStepButton.setBackgroundColor(getResources().getColor(R.color.background_light));
+        }
+        else{
+            // disable next button
+            nextStepButton.setClickable(false);
+            nextStepButton.setBackgroundColor(getResources().getColor(R.color.background_light_not_clickable));
+        }
+    }
+
+    @Override
     public String getDatasetType(){
         return datasetType;
     }

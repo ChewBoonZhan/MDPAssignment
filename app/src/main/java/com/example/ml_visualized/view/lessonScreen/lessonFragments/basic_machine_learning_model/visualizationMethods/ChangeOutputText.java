@@ -2,14 +2,14 @@ package com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machin
 
 import android.widget.TextView;
 
-import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonVisualizationFragment;
+import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonSimulationVisualizationParentFragment;
 
 public class ChangeOutputText extends VisualizationMethods{
 
     @Override
-    public int step(LessonVisualizationFragment lessonVisualizationFragment, String textDescription) {
+    public int step(LessonSimulationVisualizationParentFragment lessonSimulationVisualizationParentFragment, String textDescription) {
 
-        TextView detailsTextView = lessonVisualizationFragment.getTextView("outputDescriptionTextView");
+        TextView detailsTextView = lessonSimulationVisualizationParentFragment.getTextView("outputDescriptionTextView");
         detailsTextView.setText(textDescription);
 
         return getNO_ACTION();

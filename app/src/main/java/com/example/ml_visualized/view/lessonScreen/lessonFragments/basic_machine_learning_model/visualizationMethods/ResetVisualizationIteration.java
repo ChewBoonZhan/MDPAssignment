@@ -1,6 +1,6 @@
 package com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.visualizationMethods;
 
-import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonVisualizationFragment;
+import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonSimulationVisualizationParentFragment;
 
 public class ResetVisualizationIteration extends VisualizationMethods{
 
@@ -11,13 +11,13 @@ public class ResetVisualizationIteration extends VisualizationMethods{
     private HideCalculationTextView hideCalculationTextView = new HideCalculationTextView();
 
     @Override
-    public int step(LessonVisualizationFragment lessonVisualizationFragment, String textDescription) {
+    public int step(LessonSimulationVisualizationParentFragment lessonSimulationVisualizationParentFragment, String textDescription) {
 
-        resetTextViewBackgroundColor.step(lessonVisualizationFragment,"");
+        resetTextViewBackgroundColor.step(lessonSimulationVisualizationParentFragment,"");
 
-        resetComputeTextViewText.step(lessonVisualizationFragment,"");
+        resetComputeTextViewText.step(lessonSimulationVisualizationParentFragment,"");
 
-        hideCalculationTextView.step(lessonVisualizationFragment,"");
+        hideCalculationTextView.step(lessonSimulationVisualizationParentFragment,"");
 
         return getNO_ACTION();
     }

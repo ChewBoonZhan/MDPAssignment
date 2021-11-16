@@ -1,5 +1,6 @@
 package com.example.ml_visualized.view.lessonScreen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -61,12 +62,67 @@ public class LessonVisualizationScreen extends AppCompatActivity {
                 subScreenActionBar.setupActionBar(R.string.basic_model_title);
 
                 // create new fragment for basic machine learning model
-                fragment = new LessonVisualizationFragment(datasetType,autoStepButton,nextStepButton,outputTextView);
+                fragment = new LessonVisualizationFragment(datasetType,this);
 
                 break;
 
         }
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.lesson_visualization_frame_layout,fragment).commit();
+    }
+
+    public Button getAutoStepButton(){
+        return autoStepButton;
+    }
+
+    public Button getNextStepButton(){
+        return nextStepButton;
+    }
+
+    public TextView getOutputTextView(){
+        return outputTextView;
+    }
+
+
+    public Intent goToNewActivity(){
+        Bundle extras = getIntent().getExtras();
+
+        Intent intent = null;
+
+        // name of class to go to lesson screen
+        String activityClassName = getResources().getString(R.string.default_dir) + "view.lessonScreen";
+
+        // string for intent lesson type
+        String intentLessonType = "";
+
+        switch (lessonClass){
+            case "basic_machine_learning_visualization":
+                intentLessonType = "basic_machine_learning_simulation";
+                activityClassName +=".LessonBlankScreen";
+                break;
+        }
+        try {
+
+            // create intent to go to the new activity
+            intent = new Intent(this,Class.forName(activityClassName));
+
+        } catch (ClassNotFoundException e) {
+            // print stack trace, if class name for new activity
+            // passed in here does not exist.
+            e.printStackTrace();
+        }
+        intent.putExtra("lessonClass",intentLessonType);
+
+        // get dataset type from string
+        String datasetType = extras.getString("datasetType");
+
+        intent.putExtra("datasetType",datasetType);
+
+
+        return intent;
+    }
+
+    public void startIntentActivity(Intent intent){
+        this.startActivity(intent);
     }
 }

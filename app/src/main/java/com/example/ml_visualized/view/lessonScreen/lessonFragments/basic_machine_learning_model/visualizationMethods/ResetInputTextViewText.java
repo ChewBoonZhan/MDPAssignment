@@ -2,17 +2,17 @@ package com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machin
 
 import android.widget.TextView;
 
-import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonVisualizationFragment;
+import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonSimulationVisualizationParentFragment;
 
 public class ResetInputTextViewText extends VisualizationMethods{
     @Override
-    public int step(LessonVisualizationFragment lessonVisualizationFragment, String textDescription) {
+    public int step(LessonSimulationVisualizationParentFragment lessonSimulationVisualizationParentFragment, String textDescription) {
 
         // removing input text
-        TextView input1TextView = lessonVisualizationFragment.getTextView("input1TextView");
+        TextView input1TextView = lessonSimulationVisualizationParentFragment.getTextView("input1TextView");
         input1TextView.setText("");
 
-        TextView input2TextView = lessonVisualizationFragment.getTextView("input2TextView");
+        TextView input2TextView = lessonSimulationVisualizationParentFragment.getTextView("input2TextView");
         input2TextView.setText("");
 
         return getNO_ACTION();

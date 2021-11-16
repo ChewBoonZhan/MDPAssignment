@@ -4,36 +4,38 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.ml_visualized.R;
-import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonVisualizationFragment;
+import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.LessonSimulationVisualizationParentFragment;
 
 public class CompareWithThreshold extends VisualizationMethods{
     private ResetTextViewBackgroundColor resetTextViewBackgroundColor = new ResetTextViewBackgroundColor();
+
+    private ChangeOutputText changeOutputText = new ChangeOutputText();
     @Override
-    public int step(LessonVisualizationFragment lessonVisualizationFragment, String textDescription) {
-        resetTextViewBackgroundColor.step(lessonVisualizationFragment, "");
+    public int step(LessonSimulationVisualizationParentFragment lessonSimulationVisualizationParentFragment, String textDescription) {
+        resetTextViewBackgroundColor.step(lessonSimulationVisualizationParentFragment, "");
 
-        double threshold = lessonVisualizationFragment.getModelValueDouble("THRESHOLD");
+        double threshold = lessonSimulationVisualizationParentFragment.getModelValueDouble("THRESHOLD");
 
-        double weightedSum = lessonVisualizationFragment.getModelValueDouble("weightedSum");
+        double weightedSum = lessonSimulationVisualizationParentFragment.getModelValueDouble("weightedSum");
 
         String compareType = (weightedSum >= threshold)? ">=":"<";
 
 
-        TextView thresholdComparisionTextView = lessonVisualizationFragment.getTextView("thresholdComparisionTextView");
+        TextView thresholdComparisionTextView = lessonSimulationVisualizationParentFragment.getTextView("thresholdComparisionTextView");
         thresholdComparisionTextView.setText(("" + weightedSum +" " +compareType + " " + threshold));
 
-        thresholdComparisionTextView.setBackgroundColor(lessonVisualizationFragment.getResources().getColor(R.color.foreground_warn));
+        thresholdComparisionTextView.setBackgroundColor(lessonSimulationVisualizationParentFragment.getResources().getColor(R.color.foreground_warn));
 
-        TextView thresholdTextView = lessonVisualizationFragment.getTextView("thresholdTextView");
-        thresholdTextView.setBackgroundColor(lessonVisualizationFragment.getResources().getColor(R.color.foreground_warn));
+        TextView thresholdTextView = lessonSimulationVisualizationParentFragment.getTextView("thresholdTextView");
+        thresholdTextView.setBackgroundColor(lessonSimulationVisualizationParentFragment.getResources().getColor(R.color.foreground_warn));
 
-        TextView weightedSumTextView = lessonVisualizationFragment.getTextView("weightedSumTextView");
-        weightedSumTextView.setBackgroundColor(lessonVisualizationFragment.getResources().getColor(R.color.foreground_warn));
+        TextView weightedSumTextView = lessonSimulationVisualizationParentFragment.getTextView("weightedSumTextView");
+        weightedSumTextView.setBackgroundColor(lessonSimulationVisualizationParentFragment.getResources().getColor(R.color.foreground_warn));
 
 
         thresholdComparisionTextView.setVisibility(View.VISIBLE);
 
-        lessonVisualizationFragment.changeOutputTextViewContent(textDescription);
+        changeOutputText.step(lessonSimulationVisualizationParentFragment,textDescription);
 
         return getNO_ACTION();
     }

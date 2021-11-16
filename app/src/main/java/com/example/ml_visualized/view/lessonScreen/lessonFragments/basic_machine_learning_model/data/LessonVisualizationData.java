@@ -73,14 +73,14 @@ public class LessonVisualizationData {
                                 lessonVisualizationFragment.getModelValueDouble("THRESHOLD");
                 if(datasetType.equals("AND") || datasetType.equals("OR")){
                     output = weightedSumMoreThanThreshold ?
-                            "Since Weighted Sum is more or equal to Threshold, therefore the Output is 1" :
-                            "Since Weighted Sum is less than Threshold, therefore the Output is 0";
+                            "Since Weighted Sum is >= Threshold, therefore the Output is 1" :
+                            "Since Weighted Sum is < Threshold, therefore the Output is 0";
                 }
                 else{
                     // dataset for NAND and NOR
                     output = weightedSumMoreThanThreshold ?
-                            "Since Weighted Sum is more or equal to Threshold, therefore the Output is 0":
-                            "Since Weighted Sum is less than Threshold, therefore the Output is 1";
+                            "Since Weighted Sum is >= Threshold, therefore the Output is 0":
+                            "Since Weighted Sum is < Threshold, therefore the Output is 1";
                 }
 
                 break;
