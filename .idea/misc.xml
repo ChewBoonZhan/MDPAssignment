@@ -15,8 +15,9 @@
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_action_bar.xml" value="0.25" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_action_navigation_menu.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_desc_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_left_nav_header.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_lesson_fragment.xml" value="0.25" />
-        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_screen.xml" value="0.1" />
+        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/home_screen.xml" value="0.22" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/homt_action_navigation_menu.xml" value="0.828125" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/lesson_blank_screen.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/lesson_screen.xml" value="0.15" />
@@ -27,6 +28,7 @@
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/subscreen_action_bar.xml" value="0.18" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/layout/visualization_simulation_output_text_view.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/menu/home_action_navigation_menu.xml" value="0.17916666666666667" />
+        <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/menu/home_left_navigation_menu.xml" value="0.17916666666666667" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1953125" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1953125" />
         <entry key="..\:/Users/USER/Documents/YEAR3/MDP/Coursework/Code/app/src/main/res/mipmap-anydpi-v26/icon1.xml" value="0.1953125" />

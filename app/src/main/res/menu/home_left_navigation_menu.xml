@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Login">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id = "@+id/left_nav_login_facebook"
+                    android:title="Login with Facebook"
+                    android:icon="@drawable/facebook_logo_menu"
+
+                    />
+                <item
+                    android:id = "@+id/left_nav_login_google"
+                    android:title="Login with Google"
+                    android:icon="@drawable/google_logo_menu"
+                    />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Support Us">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id = "@+id/left_nav_paypal_donate"
+                    android:title="PayPal"
+                    android:icon="@drawable/paypal_menu_icon"
+
+                    />
+                <item
+                    android:id = "@+id/left_nav_bank_donate"
+                    android:title="Bank Transfer"
+                    android:icon="@drawable/bank_menu_icon"
+                    />
+            </group>
+        </menu>
+    </item>
+
+
+
+
+
+</menu>
