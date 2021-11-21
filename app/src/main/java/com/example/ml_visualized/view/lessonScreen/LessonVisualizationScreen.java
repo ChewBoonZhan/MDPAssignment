@@ -17,8 +17,10 @@ public class LessonVisualizationScreen extends AppCompatActivity {
     // to handle action bar
     private SubScreenActionBar subScreenActionBar;
 
+    // button to control auto visualization, or user clicks next to bring next visualization
     private Button autoStepButton, nextStepButton;
 
+    // textview for showing output and explanation
     private TextView outputTextView;
 
     private String lessonClass;
@@ -31,27 +33,34 @@ public class LessonVisualizationScreen extends AppCompatActivity {
         // to handle action bar
         subScreenActionBar = new SubScreenActionBar(this);
 
+        // get components from the screen
         getScreenComponents();
 
+        // sets the fragment for visualizing components
         setLessonFragment();
 
 
     }
 
+    // gets button and textview from screen
     private void getScreenComponents(){
         autoStepButton = findViewById(R.id.auto_step_button);
         nextStepButton = findViewById(R.id.next_step_button);
         outputTextView = findViewById(R.id.output_text_view);
     }
 
+    /**
+     * sets the lesson fragment on framelayout for visualization of components
+     */
     private void setLessonFragment(){
         Bundle extras = getIntent().getExtras();
 
+        // gets the lessonClass
         lessonClass = extras.getString("lesson_type");
 
         Fragment fragment = null;
 
-
+        // switch on lessonClass to set fragment on framelayout
         switch(lessonClass){
             case "basic_machine_learning_visualization":
 
@@ -67,23 +76,39 @@ public class LessonVisualizationScreen extends AppCompatActivity {
                 break;
 
         }
+        // set framelayout to visualization fragment
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.lesson_visualization_frame_layout,fragment).commit();
     }
 
+    /**
+     * getter for autostep Button
+     * @return button which states auto-step
+     */
     public Button getAutoStepButton(){
         return autoStepButton;
     }
 
+    /**
+     * getter for next step button
+     * @return button - button which states Next step
+     */
     public Button getNextStepButton(){
         return nextStepButton;
     }
 
+    /**
+     *
+     * @return textview - a textview to show description of visualization
+     */
     public TextView getOutputTextView(){
         return outputTextView;
     }
 
-
+    /**
+     *
+     * @return intent - intent to go to new activity after visualization is completed
+     */
     public Intent goToNewActivity(){
         Bundle extras = getIntent().getExtras();
 
@@ -95,6 +120,7 @@ public class LessonVisualizationScreen extends AppCompatActivity {
         // string for intent lesson type
         String intentLessonType = "";
 
+        // switch on lesson class to determine which actiity to go to once visualization is complete
         switch (lessonClass){
             case "basic_machine_learning_visualization":
                 intentLessonType = "basic_machine_learning_simulation";
@@ -116,12 +142,17 @@ public class LessonVisualizationScreen extends AppCompatActivity {
         // get dataset type from string
         String datasetType = extras.getString("datasetType");
 
+        // set datatype as extra into intent
         intent.putExtra("datasetType",datasetType);
 
 
         return intent;
     }
 
+    /**
+     * start intent to go to new activity
+     * @param intent
+     */
     public void startIntentActivity(Intent intent){
         this.startActivity(intent);
     }

@@ -3,7 +3,13 @@ package com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machin
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/*
+    this class is mainly containing data of:
+    - Dataset type used for lessons
+    - Dataset data for different dataset type
+ */
 public class LessonFragmentData {
+    // array list to store all dataset types
     private ArrayList<String> datasetTypeCollection = new ArrayList<String>();
 
     // data structure for input1, input2 and output
@@ -14,12 +20,14 @@ public class LessonFragmentData {
 
 
     public LessonFragmentData(){
-
+        // init arraylist that stores dataset type
         initDatasetType();
 
+        // initialize dataset collection for the model
         initDatasetCollection();
     }
 
+    // get dataset collection index
     public HashMap<String, ArrayList<Integer>> getSpecificDatasetCollection(int datasetIndex){
         String dataset = datasetTypeCollection.get(datasetIndex);
         return datasetCollection.get(dataset);
@@ -88,6 +96,13 @@ public class LessonFragmentData {
 
     }
 
+    /**
+     * Initialize output based on dataset type and input values
+     * @param datasetType - type of dataset used
+     * @param input1BooleanCollection - boolean value for input 1
+     * @param input2BooleanCollection - boolean value for input 2
+     * @return
+     */
     private ArrayList<Integer> getOutputBasedOnInput(String datasetType, ArrayList<Boolean> input1BooleanCollection, ArrayList<Boolean> input2BooleanCollection){
         ArrayList<Integer> outputBooleanCollection = new ArrayList<Integer>();
         for (int counter = 0;counter < 4;counter++){

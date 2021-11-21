@@ -6,6 +6,7 @@
     <color name="background_light_not_clickable">#7ecfc5</color>
     <color name="foreground_light">#E9C46A</color>
     <color name="foreground_alt">#F4A261</color>
+    <color name="foreground_alt_light">#f0c4a1</color>
     <color name="foreground_warn">#E76F51</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

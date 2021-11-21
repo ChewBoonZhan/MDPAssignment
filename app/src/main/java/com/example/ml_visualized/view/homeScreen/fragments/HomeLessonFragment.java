@@ -2,7 +2,6 @@ package com.example.ml_visualized.view.homeScreen.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -32,11 +31,15 @@ public class HomeLessonFragment extends Fragment {
 
         view = inflater.inflate(R.layout.home_lesson_fragment, container, false);
 
+        // set the on touch effect of each lessons
         setLessonOnTouchEffect();
 
         return view;
     }
 
+    /**
+     * set the buttons of lesson obtained from view
+     */
     private void setupButtonLessonCollection(){
         buttonLessonCollection= new ArrayList<View>();
         buttonLessonCollection.add(view.findViewById(R.id.button_lesson_1));
@@ -45,7 +48,11 @@ public class HomeLessonFragment extends Fragment {
         buttonLessonCollection.add(view.findViewById(R.id.button_lesson_4));
     }
 
+    /**
+     * set the on touch effect for lessons
+     */
     private void setLessonOnTouchEffect(){
+        // setup array of buttons obtained from view
         setupButtonLessonCollection();
 
         int numberOfButtonLessonCollection = buttonLessonCollection.size();

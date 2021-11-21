@@ -7,7 +7,7 @@ public class SharedPrefFileConnectionKeys {
     public SharedPrefFileConnectionKeys(){
 
     }
-
+    // get the keys for username
     public String getUserNameKeys(){
         return userNameKeys;
     }

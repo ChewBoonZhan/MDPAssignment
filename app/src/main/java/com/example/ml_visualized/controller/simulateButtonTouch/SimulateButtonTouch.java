@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class SimulateButtonTouch {
+
     public void simulateButtonOnTouch(View view){
         view.setOnTouchListener(new View.OnTouchListener() {
             // override the onTouch method to change alpha

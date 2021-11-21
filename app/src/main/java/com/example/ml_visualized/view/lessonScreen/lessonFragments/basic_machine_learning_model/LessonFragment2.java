@@ -24,6 +24,7 @@ public class LessonFragment2 extends Fragment implements LessonScreen1Parent {
 
     private View view;
 
+    // spinner for dataset selection
     private Spinner datasetSelectorSpinner;
 
     // to allow spinner to simulate a button touch
@@ -44,6 +45,7 @@ public class LessonFragment2 extends Fragment implements LessonScreen1Parent {
         // get components from screen to setup
         getScreenComponents();
 
+        // setup spinner for user dataset selection
         setupDatasetSelectorSpinner();
 
         return view;
@@ -51,6 +53,9 @@ public class LessonFragment2 extends Fragment implements LessonScreen1Parent {
 
     }
 
+    /**
+     * Setup spinner for user to select dataset
+     */
     private void setupDatasetSelectorSpinner(){
         simulateButtonTouch.simulateButtonOnTouch(datasetSelectorSpinner);
 
@@ -81,8 +86,15 @@ public class LessonFragment2 extends Fragment implements LessonScreen1Parent {
 
     }
 
+    /**
+     * Change the textview in table layout based on dataset selected by user in the dropdown
+     * @param spinnerSelectedItemIndex - index of dataset selected by user in spinner
+     */
     private void changeTextViewCollectionForDataset(int spinnerSelectedItemIndex){
+        // hashmap to getdataset selected input and output
         HashMap<String, ArrayList<Integer>> specificDatasetCollection= lessonFragmentData.getSpecificDatasetCollection(spinnerSelectedItemIndex);
+
+        // change output based on user selected dataset
         ArrayList<Integer> outputList = specificDatasetCollection.get("output");
         for(int counter = 0;counter < 4;counter++){
             outputTextViewCollection.get(counter).setText((outputList.get(counter) + ""));
@@ -90,6 +102,9 @@ public class LessonFragment2 extends Fragment implements LessonScreen1Parent {
 
     }
 
+    /**
+     * get components from the view screen
+     */
     private void getScreenComponents(){
         datasetSelectorSpinner = view.findViewById(R.id.basic_ml_dataset_spinner);
 

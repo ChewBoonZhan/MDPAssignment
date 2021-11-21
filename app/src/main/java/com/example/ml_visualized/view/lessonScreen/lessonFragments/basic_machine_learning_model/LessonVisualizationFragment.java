@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 
 import com.example.ml_visualized.R;
 import com.example.ml_visualized.view.lessonScreen.LessonVisualizationScreen;
+import com.example.ml_visualized.view.lessonScreen.lessonFragmentParent.LessonScreen1Parent;
 import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.data.LessonFragmentData;
 import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.data.LessonVisualizationData;
 import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine_learning_model.visualizationMethods.BackPropagate;
@@ -32,7 +33,7 @@ import com.example.ml_visualized.view.lessonScreen.lessonFragments.basic_machine
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class LessonVisualizationFragment extends LessonSimulationVisualizationParentFragment {
+public class LessonVisualizationFragment extends LessonSimulationVisualizationParentFragment implements LessonScreen1Parent {
 
     private View view;
 
@@ -50,8 +51,6 @@ public class LessonVisualizationFragment extends LessonSimulationVisualizationPa
     private Button autoStepButton, nextStepButton;
 
     private boolean stepPlaying = false;
-
-    private boolean firstTime = true;
 
     // combine it into a hashmap and send it into the function
     private ArrayList<Integer> input1Collection = new ArrayList<Integer>();
@@ -197,7 +196,6 @@ public class LessonVisualizationFragment extends LessonSimulationVisualizationPa
 
     private void step(){
         if(stepCounter == (numberOfVisualizationSteps)){
-            firstTime = false;
 
             // reset counter
             stepCounter = 0;
@@ -242,7 +240,7 @@ public class LessonVisualizationFragment extends LessonSimulationVisualizationPa
 
         }
         else{
-            String visualizeString = lessonVisualizationData.getOutputStringForIndex(stepCounter,firstTime);
+            String visualizeString = lessonVisualizationData.getOutputStringForIndex(stepCounter);
             int changeWeightState = visualizationSteps.get(stepCounter).step(this, visualizeString);
 
             if(changeWeightState == visualizationMethods.getREMAIN_WEIGHT()){
@@ -413,4 +411,8 @@ public class LessonVisualizationFragment extends LessonSimulationVisualizationPa
         return datasetType;
     }
 
+    @Override
+    public boolean showNextElement() {
+        return true;
+    }
 }

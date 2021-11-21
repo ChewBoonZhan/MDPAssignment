@@ -5,13 +5,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import com.example.ml_visualized.R;
 
 public class SubScreenActionBar {
-    // activity for back
+    // activity for bringing user back to previois activity
     private Activity activity;
+
+    /**
+     * Constructor
+     * @param activity - activity to bring user to previous activity
+     */
     public SubScreenActionBar(Activity activity){
         this.activity = activity;
     }
@@ -32,6 +35,8 @@ public class SubScreenActionBar {
     }
 
     private void actionBarBackButton(){
+        // when back is pressed, finish current activity
+        // brings user back to previous activity
         this.activity.finish();
     }
 
@@ -39,12 +44,15 @@ public class SubScreenActionBar {
         // get title text
         TextView actionBarTitleText = activity.findViewById(R.id.fragment_action_bar_title);
 
+        // set text for the action bar title
         actionBarTitleText.setText(titleTextResources);
     }
 
     public void setupActionBar(int titleTextResources){
+        // set the onclick for the back button on action bar
         setActionBarBackButtonOnClick();
 
+        // set the text for the title text on the action bar
         setActionBarTitleText(titleTextResources);
 
     }

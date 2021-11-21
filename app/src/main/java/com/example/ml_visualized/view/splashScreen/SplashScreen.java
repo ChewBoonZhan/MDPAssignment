@@ -1,20 +1,17 @@
 package com.example.ml_visualized.view.splashScreen;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.ml_visualized.R;
 import com.example.ml_visualized.controller.fileConnection.SharedPrefFileConnection;
-import com.example.ml_visualized.controller.fileConnection.SharedPrefFileConnectionKeys;
 import com.example.ml_visualized.controller.newScreen.GoToNewActivityController;
 
 public class SplashScreen extends AppCompatActivity {
@@ -61,12 +58,18 @@ public class SplashScreen extends AppCompatActivity {
         gotoStartScreen();
     }
 
+    /**
+     * load animation for both top and bottom part of the screen
+     */
     private void loadAnimation(){
         splashTopAnimation  =AnimationUtils.loadAnimation(this, R.anim.splash_top_animation);
         splashBottomAnimation = AnimationUtils.loadAnimation(this, R.anim.splash_bottom_animation);
 
     }
 
+    /**
+     * get components from the splash screen view
+     */
     private void getSplashScreenComponents(){
         splashLogo = findViewById(R.id.splash_icon);
         splashTitle = findViewById(R.id.splash_title);
@@ -74,6 +77,9 @@ public class SplashScreen extends AppCompatActivity {
 
     }
 
+    /**
+     * Set the animation for different components
+     */
     private void setAnimToComponents(){
 
         splashLogo.setAnimation(splashTopAnimation);
@@ -81,6 +87,9 @@ public class SplashScreen extends AppCompatActivity {
         splashSlogan.setAnimation(splashBottomAnimation);
     }
 
+    /**
+     * go to the start screen after splash screen is completed
+     */
     private void gotoStartScreen(){
 
         new Handler().postDelayed(new Runnable() {
@@ -92,10 +101,11 @@ public class SplashScreen extends AppCompatActivity {
 
                 if(sharedPrefFileConnection.getUserName().equals("")){
                     // user has not logged in, therefore username is empty
+                    // go to login screen
                     stringClassToGo = "view.loginScreen.LoginScreen";
                 }
                 else{
-                    // user has logged in
+                    // user has logged in, go to home screen
                     stringClassToGo = "view.homeScreen.HomeScreen";
 
                 }

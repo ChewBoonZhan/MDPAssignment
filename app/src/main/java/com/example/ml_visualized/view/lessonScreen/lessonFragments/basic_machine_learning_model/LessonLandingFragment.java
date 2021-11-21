@@ -17,10 +17,13 @@ public class LessonLandingFragment extends Fragment implements LessonScreen1Pare
     // get view of lesson landihg fragment for basic machine learning
     private View view;
 
+    // array of components that are displayed to user
     private ArrayList<View> displayComponentsCollection = new ArrayList<View>();
 
+    // current index elements are displayed
     private int displayedIndex = 1;
 
+    // number of components to be displayed on screen to user
     private int numberOfDisplayComponents;
 
     @Override
@@ -29,8 +32,10 @@ public class LessonLandingFragment extends Fragment implements LessonScreen1Pare
 
         view = inflater.inflate(R.layout.basic_machine_learning_landing_fragment, container, false);
 
+        // get all textview displaying elements to user
         getAllDisplayComponents();
 
+        // hide all textview to user
         hideAllDisplayComponents();
 
         return view;
@@ -61,6 +66,11 @@ public class LessonLandingFragment extends Fragment implements LessonScreen1Pare
         numberOfDisplayComponents = length;
     }
 
+    /**
+     * Called when user clicks on Next
+     * Shows next element of textview to user
+     * @return boolean - true or false based on if all components has been displayed to user
+     */
     @Override
     public boolean showNextElement(){
 

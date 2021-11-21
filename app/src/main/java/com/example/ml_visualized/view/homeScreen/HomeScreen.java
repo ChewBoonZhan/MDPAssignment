@@ -21,6 +21,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    /*
+        Tutorial for left navigation bar
+        1. https://www.youtube.com/watch?v=HwYENW0RyY4
+        2. https://www.youtube.com/watch?v=m1RV0HPuBWo
+        3. https://www.youtube.com/watch?v=lt6xbth-yQo
+     */
 
     // for the menu at the top of screen
     private BottomNavigationView bottomNavigationView;
@@ -40,23 +46,22 @@ public class HomeScreen extends AppCompatActivity implements NavigationView.OnNa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
 
+        // set the fragment for the home screen based on
+        // user selected at bottom navigation
         setFragment();
 
+        // get view components from the screen
         getHomeScreenComponents();
 
+        // setup the left navigation drawer
         setupLeftNavigationDrawer();
-
-
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-
-    }
-
+    /**
+     * Set the fragment for home screen to be displayed
+     */
     private void setFragment(){
+        // crete new lesson fragment
         homeScreenSelectedFragment = new HomeLessonFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.home_frame_layout,homeScreenSelectedFragment).commit();
@@ -69,14 +74,12 @@ public class HomeScreen extends AppCompatActivity implements NavigationView.OnNa
         // set the item selected listener for the menu navigation
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationListener);
 
-
+        // find the home drawer layout from screen view
         homeDrawerLayout = findViewById(R.id.home_drawer_layout);
         leftNavigationView = findViewById(R.id.home_screen_left_nav);
         toolbar = findViewById(R.id.left_nav_toolbar);
 
         setSupportActionBar(toolbar);
-
-
 
     }
 
@@ -131,8 +134,6 @@ public class HomeScreen extends AppCompatActivity implements NavigationView.OnNa
 
     public void lessonOnClick(View view){
 
-
-
         // get default directory to lesson screen
         String activityClassName = getResources().getString(R.string.default_dir) + "view.lessonScreen.LessonScreen";
 
@@ -153,15 +154,24 @@ public class HomeScreen extends AppCompatActivity implements NavigationView.OnNa
         // start intent
         startActivity(intent);
 
-
     }
 
+    /**
+     * create toast and show for lesson that is not developed
+     * @param view
+     */
     public void unDevelopedLessonOnClick(View view){
+
         Toast toast = Toast.makeText(this, "This lesson is not developed in Demo.",Toast.LENGTH_SHORT);
         toast.show();
     }
 
-
+    /**
+     * When an item is selected from the left navigation
+     * Create a toast to show user feature is not available
+     * @param item
+     * @return
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Toast toast = Toast.makeText(this,"This feature is not available in Demo",Toast.LENGTH_SHORT);

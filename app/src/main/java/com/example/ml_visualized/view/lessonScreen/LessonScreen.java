@@ -24,12 +24,18 @@ public class LessonScreen extends AppCompatActivity {
     // to handle action bar
     private SubScreenActionBar subScreenActionBar;
 
+    // checks if need to scroll to bottom of screen if user click next
     private boolean onNextScrollToBottomScreen = false;
 
+    // scrollview to control scroll of the scrollview
     private ScrollView lessonScrollView;
 
+    // lessonClass to determine which activity to goto, as well as
+    // which fragment to open in this activity
     private String lessonClass;
 
+    // hashmap of extra to be added to intent
+    // before we start the intent
     private HashMap<String,String> intentToBeAdded = new HashMap<String,String>();
 
     @Override
@@ -40,24 +46,31 @@ public class LessonScreen extends AppCompatActivity {
         // to handle action bar
         subScreenActionBar = new SubScreenActionBar(this);
 
+        // set the fragment for the lesson
         setLessonFragment();
 
+        // get components from the screen
         getScreenComponents();
 
     }
 
+    /**
+     * get components from the screen
+     */
     private void getScreenComponents(){
         lessonScrollView = findViewById(R.id.lesson_screen_scroll);
     }
 
+    // set the fragment for the framelayout of this activity
     private void setLessonFragment(){
         Bundle extras = getIntent().getExtras();
 
+        // get lessonClass from extra
         lessonClass = extras.getString("lesson_type");
 
         Fragment fragment = null;
 
-
+        // switch on it to determine which fragment to open
         switch(lessonClass){
             case "basic_machine_learning_model":
 
@@ -68,8 +81,6 @@ public class LessonScreen extends AppCompatActivity {
 
                 // create new fragment for basic machine learning model
                 fragment = new LessonLandingFragment();
-
-
 
                 break;
             case "basic_machine_learning_model2":
@@ -82,12 +93,12 @@ public class LessonScreen extends AppCompatActivity {
                 // create new fragment for basic machine learning model
                 fragment = new LessonFragment2();
 
-
-
                 break;
 
 
         }
+
+        // change the framelayout of this activity to the content of the new fragment
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.lesson_screen_frame_layout,fragment).commit();
 
@@ -95,7 +106,10 @@ public class LessonScreen extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Set the onClick of the Next button
+     * @param view
+     */
     public void lessonNextOnClick(View view){
         // get fragment manager
         FragmentManager fm = getSupportFragmentManager();
@@ -127,6 +141,9 @@ public class LessonScreen extends AppCompatActivity {
 
     }
 
+    /**
+     * Go to a new activity, with some extra in the intent
+     */
     private void goToNewActivity(){
         // intent to go to new lesson screen
         Intent intent = null;
@@ -148,6 +165,9 @@ public class LessonScreen extends AppCompatActivity {
                 intentLessonType  = "basic_machine_learning_visualization";
                 Spinner datasetType = findViewById(R.id.basic_ml_dataset_spinner);
                 String datasetSelected = datasetType.getSelectedItem().toString();
+
+                // add intent to the hashmap to set the intent to be added to the new intent
+                // before start activity
                 addDataToIntentLater("datasetType",datasetSelected);
                 activityClassName +=".LessonVisualizationScreen";
 
@@ -171,9 +191,20 @@ public class LessonScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * add extra content to a hashmap to be added to the intent
+     * @param intentKey - key of intent
+     * @param intentValue - value of the intent, a string
+     */
     private void addDataToIntentLater(String intentKey,String intentValue){
         intentToBeAdded.put(intentKey,intentValue);
     }
+
+    /**
+     * add data from hashmap that was not added to intent to intent
+     * @param intent
+     * @return
+     */
     private Intent addDataFromHashmapToIntent(Intent intent){
         for ( String intentKey : intentToBeAdded.keySet()){
             intent.putExtra(intentKey,intentToBeAdded.get(intentKey));

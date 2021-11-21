@@ -8,15 +8,25 @@ public class LessonVisualizationData {
 
     private VisualizationMethods visualizationMethods = new VisualizationMethods();
 
+    /**
+     * Constructor
+     * @param lessonVisualizationFragment - fragment to acquire data to produce return string for explanation of visualization
+     */
     public LessonVisualizationData(LessonVisualizationFragment lessonVisualizationFragment){
         this.lessonVisualizationFragment = lessonVisualizationFragment;
     }
 
-    public String getOutputStringForIndex(int index, boolean firstTime){
+    /**
+     *
+     * @param index - index for string to return to user as explanation of visualization
+     * @return String - explanation for visualization on the screen for user
+     */
+    public String getOutputStringForIndex(int index){
+        // get the dataset type and show on the screen
         String datasetType= lessonVisualizationFragment.getDatasetType();
         String output = "";
 
-
+        // switch based on different data of the fragment
         switch(index){
             case 0:
                 output = "Now, lets visualize how a model trains";
@@ -25,18 +35,14 @@ public class LessonVisualizationData {
                 output = "Let's load our Input and Output into the model from the dataset";
                 break;
             case 2:
-                if(firstTime){
-                    output = "Now, we add weight to the each input of the model.";
-                }
-                else{
-                    output = "These are the weight for Input 1 and 2 respectively.";
-                }
+                output = "These are the weight for Input 1 and 2 respectively.";
 
                 break;
             case 3:
                 output = "Then, we calculate the weighted input by using weight * input";
                 break;
             case 4:
+                // return text for how weighted input 1 is calculated
                 output = "Weighted input 1 = " +
                         lessonVisualizationFragment.getModelValueInt("input1") +
                         " * " +
@@ -45,6 +51,7 @@ public class LessonVisualizationData {
                         lessonVisualizationFragment.getModelValueDouble("weight1"));
                 break;
             case 5:
+                // return text for how weighted input 2 is calculated
                 output = "Weighted input 2 = " +
                         lessonVisualizationFragment.getModelValueInt("input2") +
                         " * " +
@@ -56,6 +63,7 @@ public class LessonVisualizationData {
                 output = "Now, we sum them up to get the weighted sum";
                 break;
             case 7:
+                // return text for how weighted input is calculated based on weighted input 1 and weighted input 2
                 output = "" + lessonVisualizationFragment.getModelValueDouble("weightedSumInput1")
                         + " + " +
                         lessonVisualizationFragment.getModelValueDouble("weightedSumInput2")
@@ -67,6 +75,8 @@ public class LessonVisualizationData {
                 output = "Now, we compare the weighted sum with the threshold";
                 break;
             case 9:
+                // return text for explanation based on dataset type, and comparision of
+                // weighted su and threshold
                 boolean weightedSumMoreThanThreshold =
                         lessonVisualizationFragment.getModelValueDouble("weightedSum")
                                 >=
@@ -85,6 +95,7 @@ public class LessonVisualizationData {
 
                 break;
             case 10:
+                // return text for backpropagation and changes in model parameter based on
                 int outputFromModel = lessonVisualizationFragment
                         .getModelValueInt("outputFromModel");
                 int actualOutput = lessonVisualizationFragment
@@ -131,8 +142,6 @@ public class LessonVisualizationData {
 
                     weightChange = "reduce";
                     weightChangeSymbol = "-";
-
-
 
                 }
                 else if(learningRateChange == visualizationMethods.getINCREASE_WEIGHT()){
